@@ -1,0 +1,41 @@
+@mixin order(){
+  @media screen and (max-width:1400px) {
+      @content
+  }
+};
+@mixin ordre(){
+  @media screen and (min-width:1400px) {
+      @content
+  }
+};
+.element{
+    background: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+$types: alkaliMetal lanthanide nobleGas transitionMetal postTransitionMetal alkalineEarthMetal actinide metalloid otherNonMetal;
+$step: calc(360deg/length($types));
+@each $type in $types {
+  $index: index($types, $type);
+    // $hue: random(360);
+    .element--#{$type} {
+      background: hsl( $index * $step , 75%, 75%  ) ;
+    }
+}
+.element__name{
+  font-size: 0.75rem;
+}
+@include ordre(){
+  @for $i from 1 through 11{
+    [data-period="#{$i}"]{
+      grid-row: #{$i} ;
+    }
+  }
+  @for $i from 1 through 18{
+    [data-group="#{$i}"]{
+      grid-column: #{$i} ;
+    }
+  }
+}

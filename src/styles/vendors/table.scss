@@ -1,0 +1,22 @@
+@mixin order(){
+    @media screen and (min-width:1400px) {
+        @content
+    }
+}
+
+.table{
+    max-width: 100vw;
+    max-height: 100vh;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px,1fr));
+    grid-auto-rows: 120px;
+    grid-gap: 0.5rem;
+    padding: 0.5rem;
+
+    @include order(){
+        grid-template-columns: repeat(18, minmax(40px,1fr));
+        grid-template-rows: repeat(10, minmax(70px,1fr));
+        grid-gap: 0.1rem;
+        padding: 0.1rem;
+    }
+}   
